@@ -2,8 +2,7 @@ import * as React from 'react'
 import * as Styled from './styled'
 import { observer } from 'mobx-react'
 import { useStore } from 'hooks/useStore'
-import { Container } from 'components/common'
-import Link from 'next/link'
+import { Container, Link } from 'components/common'
 
 export const Header = observer(() => {
   const { profileStore } = useStore()
@@ -20,10 +19,10 @@ export const Header = observer(() => {
           </Styled.Username>
         ) : (
           <Styled.AuthGroup>
-            <Link href="/auth/sign-in">
+            <Link href="/auth/sign-in" variant="secondary">
               Sign In
             </Link>
-            <Link href="/auth/sign-up">
+            <Link href="/auth/sign-up" variant="accent">
               Sign Up
             </Link>
           </Styled.AuthGroup>

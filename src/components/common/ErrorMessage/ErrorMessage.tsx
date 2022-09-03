@@ -5,7 +5,7 @@ import type { ErrorMessageProps } from './types'
 export const animations = {
   initial: {
     opacity: 0,
-    y: -2,
+    y: -4,
   },
   animate: {
     opacity: 1,
@@ -13,7 +13,7 @@ export const animations = {
   },
   exit: {
     opacity: 0,
-    y: -2,
+    y: -4,
   },
 }
 

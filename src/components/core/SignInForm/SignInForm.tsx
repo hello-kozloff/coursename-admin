@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as Styled from './styled';
 import * as Yup from 'yup';
 import { AnimatePresence } from 'framer-motion'
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { observer } from 'mobx-react'
 import { supabase } from 'supabase'
 import { useLoading, useStore } from 'hooks'
-import { Row, Input, Button, ErrorMessage, Label } from 'components/common'
+import { Row, Input, Button, ErrorMessage, Label, Checkbox, Link } from 'components/common'
 import type { SignInProps, SignInFormPayload } from './types';
 import type { User } from 'types/user'
 
@@ -21,13 +21,14 @@ const Schema = Yup.object({
     .required('Required')
 }).required()
 
-export const SignInForm = observer(({ defaultValues, onSignIn, onError }: SignInProps) => {
+export const SignInForm = observer(({ defaultValues, onSubmit, onSignIn, onError }: SignInProps) => {
   const { isLoading, setLoading } = useLoading(false)
   const { profileStore } = useStore()
   const profile = profileStore.state
 
   const {
     register,
+    control,
     formState: { errors },
     handleSubmit
   } = useForm<SignInFormPayload>({
@@ -37,9 +38,12 @@ export const SignInForm = observer(({ defaultValues, onSignIn, onError }: SignIn
 
   const isDisabled = isLoading || profile !== null
 
-  const onSubmit = handleSubmit(async ({ email, password }) => {
+  const handleFormSubmit = handleSubmit(async (payload) => {
+    onSubmit?.(payload)
     setLoading(true)
+    console.log(payload)
 
+    const { email, password } = payload
     const { user, error } = await supabase.auth.signIn({
       email,
       password
@@ -58,7 +62,8 @@ export const SignInForm = observer(({ defaultValues, onSignIn, onError }: SignIn
   })
 
   return (
-    <Styled.Form onSubmit={onSubmit}>
+    <Styled.Form onSubmit={handleFormSubmit}>
+      <Styled.Title>Sign In</Styled.Title>
       <Row>
         <Row.Column>
           <Label>Email:</Label>
@@ -99,13 +104,34 @@ export const SignInForm = observer(({ defaultValues, onSignIn, onError }: SignIn
           </AnimatePresence>
         </Row.Column>
       </Row>
-      <Row>
+      <Styled.Helpers>
         <Row.Column>
-          <Button type="submit" disabled={isDisabled} isLoading={isLoading} isBlock>
-            Sign in
-          </Button>
+          <Checkbox {...register('remember')} disabled={isDisabled}>
+            Remember me
+          </Checkbox>
         </Row.Column>
-      </Row>
+        <Row.Column>
+          <Link href="/auth/recovery">
+            Forgot you password?
+          </Link>
+        </Row.Column>
+      </Styled.Helpers>
+      <Styled.Footer>
+        <Row>
+          <Row.Column>
+            <Button type="submit" disabled={isDisabled} isLoading={isLoading} isBlock>
+              Sign in
+            </Button>
+          </Row.Column>
+        </Row>
+        <Row>
+          <Row.Column>
+            <Link href="/auth/sign-up" isBlock>
+              Create account
+            </Link>
+          </Row.Column>
+        </Row>
+      </Styled.Footer>
     </Styled.Form>
   );
 });

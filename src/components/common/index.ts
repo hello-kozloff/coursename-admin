@@ -19,3 +19,11 @@ export { Container } from './Container'
 // Label component
 export { Label } from './Label'
 export type { LabelProps } from './Label'
+
+// Checkbox component
+export { Checkbox } from './Checkbox'
+export type { CheckboxProps } from './Checkbox'
+
+// Link component
+export { Link } from './Link'
+export type { LinkProps } from './Link'
