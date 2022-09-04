@@ -2,21 +2,24 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import { useStore } from 'hooks/useStore'
 import { useRouter } from 'next/router'
+import type { GuardProps } from './types'
 
-export const Guard = observer(({ children }: React.PropsWithChildren) => {
-  const { profileStore } = useStore()
+export const Guard = observer(({ isAuthAccess, children }: GuardProps) => {
   const router = useRouter()
+  const { profileStore } = useStore()
   const profile = profileStore.state
 
   React.useEffect(() => {
-    if (profile === null) {
-      router.push('/auth/sign-in')
+    if (isAuthAccess) {
+      if (profile === null) {
+        router.push('/auth/sign-in')
+      }
+    } else {
+      if (profile !== null) {
+        router.push('/')
+      }
     }
-  }, [profile, router])
+  }, [isAuthAccess, profile, router])
 
-  return profile ? (
-    <React.Fragment>
-      {children}
-    </React.Fragment>
-  ) : null
+  return <React.Fragment>{children}</React.Fragment>
 })

@@ -5,14 +5,16 @@ import type { ExtendedAppProps } from 'types/next'
 import 'reset-css/reset.css'
 
 export default function App({ Component, pageProps }: ExtendedAppProps) {
-  const Guard = Component.isSecure ? Auth.Guard : React.Fragment
+  const Page = <Component {...pageProps} />
 
   return (
     <React.Fragment>
       <Layout>
-        <Guard>
-          <Component {...pageProps} />
-        </Guard>
+        {Component.isAuthAccess !== undefined ? (
+          <Auth.Guard isAuthAccess={Component.isAuthAccess}>
+            {Page}
+          </Auth.Guard>
+        ) : Page}
       </Layout>
       <Stylesheet />
     </React.Fragment>

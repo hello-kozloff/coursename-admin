@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import type { User } from 'types/user'
 import type { ApiError } from '@supabase/gotrue-js'
 
-export default () => {
+const SignIn = () => {
   const { error, setError } = useError();
   const { profileStore } = useStore()
   const router = useRouter()
@@ -50,3 +50,7 @@ export default () => {
     </div>
   )
 }
+
+SignIn.isAuthAccess = false
+
+export default SignIn

@@ -1,9 +1,11 @@
+import { Link } from 'components/common'
+
 const Homepage = () => {
   return (
-    <div>Homepage</div>
+    <div>
+      <Link href="/auth/sign-in">To sign in</Link>
+    </div>
   )
 }
-
-Homepage.isSecure = true
 
 export default Homepage
