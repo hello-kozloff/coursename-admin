@@ -73,15 +73,8 @@ export const SignInForm = observer(({ defaultValues, onSubmit, onSignIn, onError
             defaultValue="hello.kozloff+admin@gmail.com"
             placeholder="Enter your email"
             disabled={isDisabled}
-            isError={!!errors.email}
+            isError={errors.email && errors.email.message}
           />
-          <AnimatePresence>
-            {errors.email && (
-              <ErrorMessage align="right">
-                {errors.email.message}
-              </ErrorMessage>
-            )}
-          </AnimatePresence>
         </Row.Column>
       </Row>
       <Row>
@@ -93,15 +86,8 @@ export const SignInForm = observer(({ defaultValues, onSubmit, onSignIn, onError
             defaultValue="password"
             placeholder="Enter your password"
             disabled={isDisabled}
-            isError={!!errors.password}
+            isError={errors.password && errors.password.message}
           />
-          <AnimatePresence>
-            {errors.password && (
-              <ErrorMessage align="right">
-                {errors.password.message}
-              </ErrorMessage>
-            )}
-          </AnimatePresence>
         </Row.Column>
       </Row>
       <Styled.Helpers>

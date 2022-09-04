@@ -8,6 +8,7 @@ export const ErrorMessage = styled.div<ErrorMessageProps>`
   margin-top: 8px;
   color: rgb(255, 125, 121);
   
+
   ${({ align }) => align && css`
     display: block;
   `};

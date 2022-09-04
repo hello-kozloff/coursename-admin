@@ -2,7 +2,12 @@ import styled, { css } from 'styled-components'
 import { darken, transparentize } from 'polished'
 import type { InputProps } from './types'
 
-export const Input = styled.input<InputProps>`
+export const Input = styled.div`
+  position: relative;
+  display: block;
+`;
+
+export const Field = styled.input<InputProps>`
   width: 100%;
   padding: 12px 16px;
   border-radius: 24px;
@@ -43,3 +48,15 @@ export const Input = styled.input<InputProps>`
     }
   }
 `
+
+export const Error = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 0 16px;
+  line-height: 30px;
+  background-color: #ffffff;
+  border-radius: 0 30px 30px 0;
+`;
