@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Row } from 'components/common/Row/styled'
 
-export const Form = styled.form`
+export const SignIn = styled.form`
   max-width: 420px;
   margin: 64px auto;
 `;

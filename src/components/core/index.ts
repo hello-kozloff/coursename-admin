@@ -1,7 +1,6 @@
-export { SignInForm } from './SigninForm'
-export type { SignInFormPayload } from './SigninForm'
-
+// Layout component
 export { Layout } from './Layout'
 export type { LayoutProps } from './Layout'
 
-export { AuthGuard } from './AuthGuard'
+// Auth component
+export { Auth } from './Auth'

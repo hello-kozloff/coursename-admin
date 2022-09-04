@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { useStore } from 'hooks/useStore'
 import { useRouter } from 'next/router'
 
-export const AuthGuard = observer(({ children }: React.PropsWithChildren) => {
+export const Guard = observer(({ children }: React.PropsWithChildren) => {
   const { profileStore } = useStore()
   const router = useRouter()
   const profile = profileStore.state

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { useError, useStore } from 'hooks'
-import { SignInForm } from 'components/core'
+import { Auth } from 'components/core'
 import { ErrorMessage } from 'components/common'
+import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import type { User } from 'types/user'
 import type { ApiError } from '@supabase/gotrue-js'
-import { AnimatePresence } from 'framer-motion'
 
-const SignIn = () => {
+export default () => {
   const { error, setError } = useError();
   const { profileStore } = useStore()
   const router = useRouter()
@@ -38,7 +38,7 @@ const SignIn = () => {
           </ErrorMessage>
         )}
       </AnimatePresence>
-      <SignInForm
+      <Auth.SignIn
         defaultValues={{
           email: 'hello.kozloff+admin@gmail.com',
           password: 'password'
@@ -50,5 +50,3 @@ const SignIn = () => {
     </div>
   )
 }
-
-export default SignIn

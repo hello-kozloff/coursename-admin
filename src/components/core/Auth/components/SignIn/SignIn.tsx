@@ -1,14 +1,13 @@
 import * as React from 'react';
 import * as Styled from './styled';
 import * as Yup from 'yup';
-import { AnimatePresence } from 'framer-motion'
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { observer } from 'mobx-react'
 import { supabase } from 'supabase'
 import { useLoading, useStore } from 'hooks'
-import { Row, Input, Button, ErrorMessage, Label, Checkbox, Link } from 'components/common'
-import type { SignInProps, SignInFormPayload } from './types';
+import { Row, Input, Button, Label, Checkbox, Link } from 'components/common'
+import type { SignInProps, SignInPayload } from './types';
 import type { User } from 'types/user'
 
 const Schema = Yup.object({
@@ -21,17 +20,16 @@ const Schema = Yup.object({
     .required('Required')
 }).required()
 
-export const SignInForm = observer(({ defaultValues, onSubmit, onSignIn, onError }: SignInProps) => {
+export const SignIn = observer(({ defaultValues, onSubmit, onSignIn, onError }: SignInProps) => {
   const { isLoading, setLoading } = useLoading(false)
   const { profileStore } = useStore()
   const profile = profileStore.state
 
   const {
     register,
-    control,
     formState: { errors },
     handleSubmit
-  } = useForm<SignInFormPayload>({
+  } = useForm<SignInPayload>({
     defaultValues,
     resolver: yupResolver(Schema)
   });
@@ -62,7 +60,7 @@ export const SignInForm = observer(({ defaultValues, onSubmit, onSignIn, onError
   })
 
   return (
-    <Styled.Form onSubmit={handleFormSubmit}>
+    <Styled.SignIn onSubmit={handleFormSubmit}>
       <Styled.Title>Sign In</Styled.Title>
       <Row>
         <Row.Column>
@@ -118,6 +116,6 @@ export const SignInForm = observer(({ defaultValues, onSubmit, onSignIn, onError
           </Row.Column>
         </Row>
       </Styled.Footer>
-    </Styled.Form>
+    </Styled.SignIn>
   );
 });
