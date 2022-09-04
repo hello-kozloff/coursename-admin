@@ -13,14 +13,14 @@ export const Link = styled.a<Pick<LinkProps, 'variant' | 'isBlock'>>`
       case 'primary': return css`
         color: #2DB38B;
 
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
           color: #1e8e6c;
         }
       `
       case 'secondary': return css`
         color: #000000;
 
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
           color: #249e79;
         }
 
@@ -35,7 +35,7 @@ export const Link = styled.a<Pick<LinkProps, 'variant' | 'isBlock'>>`
         border-radius: 30px;
         padding: 10px 16px;
 
-        &:hover, &:focus {
+        &:hover, &:focus-visible {
           background-color: #249e79;
         }
 

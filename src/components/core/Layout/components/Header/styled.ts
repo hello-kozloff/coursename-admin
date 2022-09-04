@@ -7,6 +7,7 @@ export const Header = styled.header`
   background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(255,255,255,0) 100%);
 
   ${Container} {
+    height: 36px;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
