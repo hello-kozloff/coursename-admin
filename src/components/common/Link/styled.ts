@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { LinkProps } from './types'
+import { transparentize } from 'polished'
 
 export const Link = styled.a<Pick<LinkProps, 'variant' | 'isBlock'>>`
   outline: none;
@@ -37,6 +38,7 @@ export const Link = styled.a<Pick<LinkProps, 'variant' | 'isBlock'>>`
 
         &:hover, &:focus-visible {
           background-color: #249e79;
+          box-shadow: 0 0 0 4px ${transparentize(.8, '#2DB38B')};
         }
 
         &:active {

@@ -9,17 +9,15 @@ export interface Profile {
 
   /**
    * First name
-   * @type {string | null}
-   * @default {null}
+   * @type {string}
    */
-  firstName: string | null
+  firstName: string
 
   /**
    * Last name
-   * @type {string | null}
-   * @default {null}
+   * @type {string}
    */
-  lastName: string | null
+  lastName: string
 
   /**
    * Path to avatar

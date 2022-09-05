@@ -49,6 +49,7 @@ export const Button = styled.button<ButtonProps>`
   &:not(:disabled) {
     &:hover, &:focus {
       background-color: #249e79;
+      box-shadow: 0 0 0 4px ${transparentize(.8, '#2DB38B')};
     }
 
     &:active {

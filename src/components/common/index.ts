@@ -27,3 +27,7 @@ export type { CheckboxProps } from './Checkbox'
 // Link component
 export { Link } from './Link'
 export type { LinkProps } from './Link'
+
+// Avatar component
+export { Avatar } from './Avatar'
+export type { AvatarProps } from './Avatar'

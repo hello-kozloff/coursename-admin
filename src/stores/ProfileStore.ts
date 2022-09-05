@@ -40,4 +40,14 @@ export class ProfileStore {
       }
     })
   }
+
+  public getUsername(variant: 'primary' | 'compact' = 'primary') {
+    if (this.state === null) return null
+    const { firstName, lastName } = this.state
+
+    switch (variant) {
+      case 'compact': return `${firstName} ${lastName[0]}.`
+      default: return `${firstName} ${lastName}`
+    }
+  }
 }

@@ -8,9 +8,9 @@ export const Header = styled.header`
 
   ${Container} {
     height: 36px;
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 `
 
